@@ -8,10 +8,16 @@ main(){
     runApp(PerguntaApp());
 }
 
-class PerguntaApp extends StatelessWidget{
+class PerguntaAppState extends State<PerguntaApp>{
+
+  var PerguntaSelecionada = 0;
 
   void responder(){
-    print("Pergunta Respondida");
+
+    setState(() {
+      PerguntaSelecionada++;
+    });
+    print(PerguntaSelecionada);
   }
 
   @override
@@ -22,36 +28,39 @@ class PerguntaApp extends StatelessWidget{
       "Qual é o seu animal favorito?",
     ];
 
-  return MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text("Perguntas"),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Perguntas"),
+        ),
+        body: Column(
+          children: [
+            Text(perguntas[PerguntaSelecionada]),
+            ElevatedButton(
+                onPressed: responder,
+                child: Text("Resposta 1")
+            ),
+            ElevatedButton(
+                onPressed: responder,
+                child: Text("Resposta 2")
+            ),
+            ElevatedButton(
+                onPressed: responder,
+                child: Text("Resposta 3")
+            ),
+          ],
+        ),
       ),
-      body: Column(
-        children: [
-          Text(perguntas[0]),
-          ElevatedButton(
-              onPressed: (){
-                print("Respista 1 foi selecionada!");
-              },
-              child: Text("Resposta 1")
-          ),
-          ElevatedButton(
-              onPressed: (){
-                print("Resposta 2 foi selecionada!");
-              },
-              child: Text("Resposta 2")
-          ),
-          ElevatedButton(
-              onPressed: (){
-                print("Resposta 3 selecionada!");
-              },
-              child: Text("Resposta 3")
-          ),
-        ],
-      ),
-    ),
-    
-  );
+
+    );
+  }
+
+}
+
+class PerguntaApp extends StatefulWidget{
+
+    @override
+  PerguntaAppState createState() {
+      return PerguntaAppState();
   }
 }
