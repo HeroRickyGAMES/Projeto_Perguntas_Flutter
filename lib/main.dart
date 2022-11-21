@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +5,7 @@ import 'package:flutter/material.dart';
 
 
 main(){
-    runApp(new PerguntaApp());
+    runApp(PerguntaApp());
 }
 
 class PerguntaApp extends StatelessWidget{
