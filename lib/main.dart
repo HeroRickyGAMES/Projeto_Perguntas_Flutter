@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import './questao.dart';
 //Programado por HeroRickyGames
 
 
@@ -8,7 +8,7 @@ main(){
     runApp(PerguntaApp());
 }
 
-class PerguntaAppState extends State<PerguntaApp>{
+class _PerguntaAppState extends State<PerguntaApp>{
 
   var PerguntaSelecionada = 0;
 
@@ -35,7 +35,7 @@ class PerguntaAppState extends State<PerguntaApp>{
         ),
         body: Column(
           children: [
-            Text(perguntas[PerguntaSelecionada]),
+            Questao(perguntas[PerguntaSelecionada]),
             ElevatedButton(
                 onPressed: responder,
                 child: Text("Resposta 1")
@@ -60,7 +60,7 @@ class PerguntaAppState extends State<PerguntaApp>{
 class PerguntaApp extends StatefulWidget{
 
     @override
-  PerguntaAppState createState() {
-      return PerguntaAppState();
+    _PerguntaAppState createState() {
+      return _PerguntaAppState();
   }
 }
