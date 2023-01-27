@@ -68,7 +68,15 @@ class _PerguntaAppState extends State<PerguntaApp>{
             Questao(perguntas[PerguntaSelecionada]['texto'] as String),
             ...widgets,
           ],
-        ): null,
+        ): Center(
+          child:
+          Text(
+            'Parabéns!',
+            style: TextStyle(
+              fontSize: 28
+            ),
+          ),
+        ),
       ),
 
     );
