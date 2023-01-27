@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './questao.dart';
-import './resposta.dart';
+import './questionario.dart';
 import './resultado.dart';
 //Programado por HeroRickyGames
 
@@ -46,30 +45,19 @@ class _PerguntaAppState extends State<PerguntaApp>{
     return PerguntaSelecionada < perguntas.length;
   }
 
+
   @override
   Widget build(BuildContext context) {
-    List<String> respostas = perguntas[PerguntaSelecionada]['respostas'] as List<String>;
-    List<Widget> widgets = respostas.map((t) => Resposta(t, responder)).toList();
 
-    //for(String textoResp in respostas) {
-
-    //  widgets.add(Resposta(textoResp, responder));
-
-    //  print(textoResp);
-      
-   // }
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text("Perguntas"),
         ),
-        body: temPerguntaSelecionada ? Column(
-          children: [
-            Questao(perguntas[PerguntaSelecionada]['texto'] as String),
-            ...widgets,
-          ],
-        ): Resultado(),
+        body: temPerguntaSelecionada ?
+            Questionario(perguntas: perguntas, PerguntaSelecionada: PerguntaSelecionada, responder: responder)
+            : Resultado(),
       ),
 
     );
