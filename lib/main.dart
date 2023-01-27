@@ -12,33 +12,41 @@ main(){
 class _PerguntaAppState extends State<PerguntaApp>{
 
   var PerguntaSelecionada = 0;
+  List<String> respostas =[];
+  List<Widget> widgets = [];
+  final List<Map <String, Object>> perguntas = const [
+    {
+      'texto': 'Qual é a sua cor favorita?',
+      'respostas': ['Preto', 'Vermelho', 'Verde','Branco'],
+    },
+    {
+      'texto': "Qual é o seu animal favorito?",
+      'respostas': ['Coelho', 'Cobra', 'Elefante','Leão'],
+    },
+    {
+      'texto': "Porque o Jailson Mendes demorou para entregar a peça para o Kauan para relaxar?",
+      'respostas': ['Foi dar a bunda', 'Foi cagar no mato antes de dar', 'Foi buscar na China','Foi buscar na India'],
+    },
+  ];
 
   void responder(){
 
-    setState(() {
-      PerguntaSelecionada++;
-    });
-    print(PerguntaSelecionada);
+    if(temPerguntaSelecionada){
+        setState(() {
+          PerguntaSelecionada++;
+        });
+
+        print(PerguntaSelecionada);
+        print(temPerguntaSelecionada);
+    }
+  }
+
+  bool get temPerguntaSelecionada{
+    return PerguntaSelecionada < perguntas.length;
   }
 
   @override
   Widget build(BuildContext context) {
-
-    final List<Map <String, Object>> perguntas = [
-     {
-       'texto': 'Qual é a sua cor favorita?',
-       'respostas': ['Preto', 'Vermelho', 'Verde','Branco'],
-     },
-      {
-        'texto': "Qual é o seu animal favorito?",
-        'respostas': ['Coelho', 'Cobra', 'Elefante','Leão'],
-      },
-      {
-        'texto': "Porque o Jailson Mendes demorou para entregar a peça para o Kauan para relaxar?",
-        'respostas': ['Foi dar a bunda', 'Foi cagar no mato antes de dar', 'Foi buscar na China','Foi buscar na India'],
-      },
-    ];
-
     List<String> respostas = perguntas[PerguntaSelecionada]['respostas'] as List<String>;
     List<Widget> widgets = respostas.map((t) => Resposta(t, responder)).toList();
 
@@ -55,12 +63,12 @@ class _PerguntaAppState extends State<PerguntaApp>{
         appBar: AppBar(
           title: Text("Perguntas"),
         ),
-        body: Column(
+        body: temPerguntaSelecionada ? Column(
           children: [
             Questao(perguntas[PerguntaSelecionada]['texto'] as String),
             ...widgets,
           ],
-        ),
+        ): null,
       ),
 
     );
