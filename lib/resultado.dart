@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//Programado por HeroRickyGames
+
 class Resultado extends StatelessWidget{
 
   @override
