@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './questao.dart';
 import './resposta.dart';
+import './resultado.dart';
 //Programado por HeroRickyGames
 
 
@@ -68,15 +69,7 @@ class _PerguntaAppState extends State<PerguntaApp>{
             Questao(perguntas[PerguntaSelecionada]['texto'] as String),
             ...widgets,
           ],
-        ): Center(
-          child:
-          Text(
-            'Parabéns!',
-            style: TextStyle(
-              fontSize: 28
-            ),
-          ),
-        ),
+        ): Resultado(),
       ),
 
     );
